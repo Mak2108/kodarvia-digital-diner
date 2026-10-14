@@ -9,7 +9,7 @@ import { sendContactMessage } from '@/lib/contact.functions';
 
 export function Contact() {
   const send = useServerFn(sendContactMessage);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<'name' | 'email' | 'message', string>>>({});
   const [state, setState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
